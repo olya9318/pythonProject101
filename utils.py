@@ -1,4 +1,5 @@
 import sqlite3
+from collections import Counter
 
 
 class DbConnect:
@@ -117,12 +118,14 @@ def search_movie(movie_type, release_year, genre):
     WHERE type = '{movie_type}'
     and release_year = {release_year}
     and listed_in LIKE '%{genre}%';"""
-    result = excute_query(query)
+    result = execute_query(query)
     result_list = []
     for movie in result:
         result_list.append({'title': movie[0],
                             'description': movie[1]})
     return result_list
+
+
 
 
 
